@@ -1,5 +1,5 @@
 pycbc_generate_hwinj --high-frequency-cutoff 1024.0 \
---geocentric-end-time 1124381661 \
+--geocentric-end-time 1124384417 \
 --gps-start-time H1:1124380361 \
 --gps-end-time H1:1124382409 \
 --frame-type H1:H1_HOFT_C00 \
@@ -27,4 +27,4 @@ pycbc_generate_hwinj --high-frequency-cutoff 1024.0 \
 
 #1124380361 2015-08-23T15:52:24
 #1124382409 2015-08-23T16:26:32
-#1124381661 2015-08-23T16:14:04
+#1124384417 2015-08-23T17:00:00
