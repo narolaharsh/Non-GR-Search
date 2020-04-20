@@ -1,0 +1,1 @@
+pycbc_generate_hwinj_from_xml --injection-file HL-INJECTIONS_3-1126368017-4003200.xml --sample-rate 1024
