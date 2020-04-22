@@ -1,0 +1,11 @@
+executable = /home/narola.bharatbhai/src/newPyCBC/bin/python
+arguments = /home/narola.bharatbhai/banksim/injtest20/non-GR-bank/pysub/match.$(Process)
+universe = vanilla
+accounting_group = ligo.sim.o2.cbc.explore.test
+log = log.injtest20
+request_memory = 8192
+error = /home/narola.bharatbhai/banksim/injtest20/non-GR-bank/pysub/err/err.$(Process)
+output = /home/narola.bharatbhai/banksim/injtest20/non-GR-bank/pysub/out/out.$(Process)
+should_transfer_files = yes
+transfer_input_files = /home/narola.bharatbhai/banksim/injtest20/non-GR-bank/pysub/match.$(Process)
+queue 10000
