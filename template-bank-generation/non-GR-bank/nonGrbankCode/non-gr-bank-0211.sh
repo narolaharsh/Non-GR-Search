@@ -1,0 +1,13 @@
+python lalapps_cbc_sbank.py --approximant IMRPhenomD --aligned-spin \
+        --mass1-min 5.0 --mass1-max 100.0 \
+	--mass2-min 5.0 --mass2-max 90.0 \
+	--mratio-min 1.0 --mratio-max 10.0 \
+	--mtotal-min 10.0 --mtotal-max 100.0 \
+        --spin1-min -0.98 --spin1-max 0.98 \
+    	--spin2-min -0.98 --spin2-max 0.98 \
+	--deltaChi1-min -0.894 --deltaChi1-max 2.701 \
+    	--deltaChi2-min -0.66 --deltaChi2-max 1.806 \
+	--deltaChi3-min -1.127 --deltaChi3-max 0.419 \
+    	--deltaChi4-min -3.552 --deltaChi4-max 8.35 \
+        --match-min 0.97 --flow 30.0 --fhigh 1024.0 --reference-psd H1L1-AVERAGE_PSD-1128643217-86400.txt\
+        --output-filename non-gr-bank-1.xml.gz --verbose

@@ -1,0 +1,12 @@
+python lalapps_cbc_sbank.py --approximant IMRPhenomD --aligned-spin \
+        --mass1-min 5.0 --mass1-max 100.0 \
+	--mass2-min 5.0 --mass2-max 100.0 \
+	--mratio-min 1.0 --mratio-max 3.0 \
+        --spin1-min -0.98 --spin1-max 0.98 \
+    	--spin2-min -0.98 --spin2-max 0.98 \
+	    --deltaChi1-min 0.0 --deltaChi1-max 0.0 \
+    	--deltaChi2-min 0.0 --deltaChi2-max 0.0 \
+	    --deltaChi3-min 0.0 --deltaChi3-max 0.0 \
+    	--deltaChi4-min 0.0 --deltaChi4-max 0.0 \
+        --match-min 0.97 --flow 30.0 --fhigh 2048.0 --reference-psd H1L1-AVERAGE_PSD-1128643217-86400.txt \
+        --output-filename BBH-LVT-NoDeviation.xml.gz --verbose
