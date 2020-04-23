@@ -1,0 +1,1 @@
+/home/narola.bharatbhai/src/pycbc/bin/pycbc_submit_dax -d work10-nonGR.dax -a ligo.sim.o2.cbc.explore.test
