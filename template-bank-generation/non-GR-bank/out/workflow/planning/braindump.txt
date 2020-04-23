@@ -1,0 +1,27 @@
+user narola.bharatbhai
+grid_dn /DC=org/DC=cilogon/C=US/O=LIGO/CN=Narola Bharatbhai narola.bharatbhai@ligo.org
+submit_hostname ldas-pcdev1.ligo.caltech.edu
+root_wf_uuid eed2d025-e5ba-4965-b170-459a7ad6be77
+wf_uuid eed2d025-e5ba-4965-b170-459a7ad6be77
+dax /home/narola.bharatbhai/workflow-bank-non-GR-small/output10/out/work10-nonGR.dax
+dax_label work10-nonGR
+dax_index 0
+dax_version 3.6
+pegasus_wf_name work10-nonGR-0
+timestamp 20200228T020728-0800
+basedir /local/narola.bharatbhai/pycbc-tmp.Nu4pf1tWLE
+submit_dir /local/narola.bharatbhai/pycbc-tmp.Nu4pf1tWLE/work
+planner /usr/bin/pegasus-plan
+planner_version 4.9.2
+pegasus_build 20190807162726Z
+planner_arguments "--conf ./pegasus-properties.conf -d work10-nonGR.dax --sites local -o local --dir /local/narola.bharatbhai/pycbc-tmp.Nu4pf1tWLE --cleanup inplace --relative-dir work --cluster horizontal --submit "
+jsd jobstate.log
+rundir work
+bindir /usr/bin
+vogroup pegasus
+uses_pmc false
+properties pegasus.7361345844726313963.properties
+condor_log work10-nonGR-0.log
+dag work10-nonGR-0.dag
+type dag
+notify work10-nonGR-0.notify

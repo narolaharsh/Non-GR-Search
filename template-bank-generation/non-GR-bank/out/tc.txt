@@ -1,0 +1,61 @@
+tr sbank-COARSE-H1L1V1_ID0 {
+	profile condor "request_memory" "10000"
+	profile condor "universe" "vanilla"
+	site local {
+		pfn "/home/narola.bharatbhai/src/pycbc/opt/lalsuite/bin/lalapps_cbc_sbank1"
+		arch "x86_64"
+		os "linux"
+		type "INSTALLED"
+	}
+}
+
+tr h5add-FINAL-H1L1V1_ID5 {
+	profile condor "universe" "vanilla"
+	site local {
+		pfn "/home/narola.bharatbhai/src/pycbc/opt/lalsuite/bin/lalapps_cbc_sbank_hdf5_bankcombiner"
+		arch "x86_64"
+		os "linux"
+		type "INSTALLED"
+	}
+}
+
+tr h5add-FIRST-H1L1V1_ID3 {
+	profile condor "universe" "vanilla"
+	site local {
+		pfn "/home/narola.bharatbhai/src/pycbc/opt/lalsuite/bin/lalapps_cbc_sbank_hdf5_bankcombiner"
+		arch "x86_64"
+		os "linux"
+		type "INSTALLED"
+	}
+}
+
+tr sbank-READDER-H1L1V1_ID4 {
+	profile condor "universe" "vanilla"
+	site local {
+		pfn "/home/narola.bharatbhai/src/pycbc/opt/lalsuite/bin/lalapps_cbc_sbank1"
+		arch "x86_64"
+		os "linux"
+		type "INSTALLED"
+	}
+}
+
+tr sbank_mchirp_bins-H1L1V1_ID1 {
+	profile condor "universe" "vanilla"
+	site local {
+		pfn "/home/narola.bharatbhai/src/pycbc/opt/lalsuite/bin/lalapps_cbc_sbank_hdf5_choose_mchirp_boundaries"
+		arch "x86_64"
+		os "linux"
+		type "INSTALLED"
+	}
+}
+
+tr sbank-PARALLEL-H1L1V1_ID2 {
+	profile condor "universe" "vanilla"
+	site local {
+		pfn "/home/narola.bharatbhai/src/pycbc/opt/lalsuite/bin/lalapps_cbc_sbank1"
+		arch "x86_64"
+		os "linux"
+		type "INSTALLED"
+	}
+}
+
