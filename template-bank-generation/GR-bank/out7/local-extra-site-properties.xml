@@ -1,0 +1,3 @@
+    <profile namespace="condor" key="accounting_group">ligo.sim.o2.cbc.explore.test</profile>
+    <profile namespace="condor" key="accounting_group_user"></profile>
+    <profile namespace="condor" key="use_x509userproxy">True</profile>
