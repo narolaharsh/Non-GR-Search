@@ -10,7 +10,7 @@ lalapps_inspinj --gps-start-time 1126368017 \
     --min-distance 1000. \
     --max-distance 1000. \
     --l-distr random \
-    --waveform IMRPhenomD \
+    --waveform IMRPhenomDpseudoFourPN \
     --aligned \
     --enable-spin \
     --d-distr uniform \
