@@ -1,0 +1,53 @@
+Enter your LIGO.ORG username in (e.g. albert.einstein): 
+Your identity: narola.bharatbhai@LIGO.ORG
+Enter pass phrase for this identity:
+Creating proxy .................................... Done
+Your proxy is valid until: Feb 23 16:44:01 2020 GMT
+subject  : /DC=org/DC=cilogon/C=US/O=LIGO/CN=Narola Bharatbhai narola.bharatbhai@ligo.org/CN=1508403631
+issuer   : /DC=org/DC=cilogon/C=US/O=LIGO/CN=Narola Bharatbhai narola.bharatbhai@ligo.org
+identity : /DC=org/DC=cilogon/C=US/O=LIGO/CN=Narola Bharatbhai narola.bharatbhai@ligo.org
+type     : RFC 3820 compliant impersonation proxy
+strength : 2048 bits
+path     : /tmp/x509up_u45454
+timeleft : 275:59:59  (11.5 days)
+Generating concrete workflow
+2020.02.11 20:44:05.093 PST: [WARNING]  profile condor.accounting_group_user is empty, Removing! 
+Rank  ( rank => 1 priority => 500 expr => file://(?!.*(cvmfs)).*)
+Rank  ( rank => 2 priority => 400 expr => file:///cvmfs/.*)
+Rank  ( rank => 3 priority => 300 expr => root://.*)
+Rank  ( rank => 4 priority => 200 expr => gsiftp://red-gridftp.unl.edu.*)
+Rank  ( rank => 5 priority => 100 expr => gridftp://.*)
+Rank  ( rank => 6 priority => 0 expr => .*)
+2020.02.11 20:44:08.047 PST:    
+2020.02.11 20:44:08.052 PST:   ----------------------------------------------------------------------- 
+2020.02.11 20:44:08.058 PST:   File for submitting this DAG to HTCondor           : work7-0.dag.condor.sub 
+2020.02.11 20:44:08.063 PST:   Log of DAGMan debugging messages                 : work7-0.dag.dagman.out 
+2020.02.11 20:44:08.068 PST:   Log of HTCondor library output                     : work7-0.dag.lib.out 
+2020.02.11 20:44:08.074 PST:   Log of HTCondor library error messages             : work7-0.dag.lib.err 
+2020.02.11 20:44:08.079 PST:   Log of the life of condor_dagman itself          : work7-0.dag.dagman.log 
+2020.02.11 20:44:08.084 PST:    
+2020.02.11 20:44:08.089 PST:   -no_submit given, not submitting DAG to HTCondor.  You can do this with: 
+2020.02.11 20:44:08.099 PST:   ----------------------------------------------------------------------- 
+2020.02.11 20:44:08.868 PST:   Your database is compatible with Pegasus version: 4.9.2 
+2020.02.11 20:44:08.952 PST:   Submitting to condor work7-0.dag.condor.sub 
+2020.02.11 20:44:09.006 PST:   Submitting job(s). 
+2020.02.11 20:44:09.011 PST:   1 job(s) submitted to cluster 45979808. 
+2020.02.11 20:44:09.017 PST:    
+2020.02.11 20:44:09.022 PST:   Your workflow has been started and is running in the base directory: 
+2020.02.11 20:44:09.027 PST:    
+2020.02.11 20:44:09.032 PST:     /local/narola.bharatbhai/pycbc-tmp.ikgaMpLuQ0/work 
+2020.02.11 20:44:09.038 PST:    
+2020.02.11 20:44:09.043 PST:   *** To monitor the workflow you can run *** 
+2020.02.11 20:44:09.048 PST:    
+2020.02.11 20:44:09.053 PST:     pegasus-status -l /local/narola.bharatbhai/pycbc-tmp.ikgaMpLuQ0/work 
+2020.02.11 20:44:09.058 PST:    
+2020.02.11 20:44:09.064 PST:   *** To remove your workflow run *** 
+2020.02.11 20:44:09.069 PST:    
+2020.02.11 20:44:09.074 PST:     pegasus-remove /local/narola.bharatbhai/pycbc-tmp.ikgaMpLuQ0/work 
+2020.02.11 20:44:09.079 PST:    
+2020.02.11 20:44:09.724 PST:   Time taken to execute is 4.249 seconds 
+
+Querying Pegasus database for workflow stored in /local/narola.bharatbhai/pycbc-tmp.ikgaMpLuQ0/work
+This may take up to 120 seconds. Please wait.... Done.
+basename: missing operand
+Try 'basename --help' for more information.
