@@ -1,5 +1,5 @@
 lalapps_inspinj --gps-start-time 1126368017 \
-    --gps-end-time 1126375217 \
+    --gps-end-time 1126972817 \
     --f-lower 30.0 \
     --min-mtotal 10.0 --max-mtotal 100.0 \
     --min-spin1 0.0 --max-spin1 0.998 \
@@ -15,8 +15,9 @@ lalapps_inspinj --gps-start-time 1126368017 \
     --enable-spin \
     --d-distr uniform \
     --time-step 600 \
+    --time-interval 650 \
     --seed 3
 
-#1126368017 150915 16 00 00
-#1126375217 2015-09-15T18:00:00
+#1126368017 2015-09-15T16:00:00
+#1126972817 2015-09-22T16:00:00
 #--time-interval 0. \
