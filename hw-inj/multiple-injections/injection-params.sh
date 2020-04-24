@@ -14,7 +14,7 @@ lalapps_inspinj --gps-start-time 1126368017 \
     --aligned \
     --enable-spin \
     --d-distr uniform \
-    --time-step 604800 \
+    --time-step 600 \
     --seed 3
 
 #1126368017 150915 16 00 00
