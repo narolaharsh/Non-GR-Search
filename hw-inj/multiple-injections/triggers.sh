@@ -12,17 +12,18 @@ pycbc_inspiral --segment-end-pad 64  \
 --filter-inj-only \
 --processing-scheme cpu \
 --cluster-method template \
---approximant IMRPhenomDpseudoFourPN \
+--approximant IMRPhenomD \
 --order 8 \
 --snr-threshold 5.5 \
 --chisq-bins 16 \
 --channel-name H1:GDS-CALIB_STRAIN \
---gps-start-time 1126368017 \
---gps-end-time 1130371217 \
---trig-start-time 1126368015 \
---trig-end-time 1130371215 \
+--gps-start-time 1126086042 \
+--gps-end-time 1126431642 \
 --frame-type H1_HOFT_C00 \
---injection-file HL-INJECTIONS_3-1126368017-4003200.xml \
+--injection-file HL-INJECTIONS_3-1126086042-345600.xml \
 --bank-file Feb12.h5 \
---output multiple_injections_output.h5 \
+--output multiple-injections-output-4-days.h5 \
 --verbose
+
+#--trig-start-time 1126086242 \
+#--trig-end-time 1126431442 \
