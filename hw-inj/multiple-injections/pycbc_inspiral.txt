@@ -1,0 +1,358 @@
+
+usage: 
+
+Find single detector gravitational-wave triggers.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version
+  -V, --verbose         print extra debugging information
+  --update-progress UPDATE_PROGRESS
+                        updates a file 'progress.txt' with a value 0 .. 1.0 when this amount
+                        of (filtering) progress was made
+  --update-progress-file UPDATE_PROGRESS_FILE
+                        name of the file to write the amount of (filtering) progress to
+  --output OUTPUT       FIXME: ADD
+  --bank-file BANK_FILE
+                        FIXME: ADD
+  --snr-threshold SNR_THRESHOLD
+                        SNR threshold for trigger generation
+  --newsnr-threshold THRESHOLD
+                        Cut triggers with NewSNR less than THRESHOLD
+  --low-frequency-cutoff LOW_FREQUENCY_CUTOFF
+                        The low frequency cutoff to use for filtering (Hz)
+  --enable-bank-start-frequency
+                        Read the starting frequency of template waveforms from the template
+                        bank.
+  --max-template-length MAX_TEMPLATE_LENGTH
+                        The maximum length of a template is seconds. The starting frequency of
+                        the template is modified to ensure the proper length
+  --enable-q-transform  compute the q-transform for each segment of a given analysis run.
+                        (default = False)
+  --approximant APPRX[:COND] [APPRX[:COND] ...]
+                        The approximant(s) to use. Multiple approximants to use in different
+                        regions may be provided. If multiple approximants are provided, every
+                        one but the last must be be followed by a conditional statement
+                        defining where that approximant should be used. Conditionals can be
+                        any boolean test understood by numpy. For example, 'Apprx:(mtotal > 4)
+                        & (mchirp <= 5)' would use approximant 'Apprx' where total mass is > 4
+                        and chirp mass is <= 5. Conditionals are applied in order, with each
+                        successive one only applied to regions not covered by previous
+                        arguments. For example, `'TaylorF2:mtotal < 4' 'IMRPhenomD:mchirp <
+                        3'` would result in IMRPhenomD being used where chirp mass is < 3 and
+                        total mass is >= 4. The last approximant given may use 'else' as the
+                        conditional or include no conditional. In either case, this will cause
+                        the last approximant to be used in any remaning regions after all the
+                        previous conditionals have been applied. For the full list of possible
+                        parameters to apply conditionals to, see
+                        WaveformArray.default_fields(). Math operations may also be used on
+                        parameters; syntax is python, with any operation recognized by numpy.
+  --order {-1,0,1,2,3,4,5,6,7,8}
+                        The integer half-PN order at which to generate the approximant.
+                        Default is -1 which indicates to use approximant defined default.
+  --taper-template {start,end,startend}
+                        For time-domain approximants, taper the start and/or end of the
+                        waveform before FFTing.
+  --cluster-method {template,window}
+                        FIXME: ADD
+  --cluster-function {findchirp,symmetric}
+                        How to cluster together triggers within a window. 'findchirp' uses a
+                        forward sliding window; 'symmetric' will compare each window to the
+                        one before and after, keeping only a local maximum.
+  --cluster-window CLUSTER_WINDOW
+                        Length of clustering window in seconds. Set to 0 to disable
+                        clustering.
+  --maximization-interval MAXIMIZATION_INTERVAL
+                        Maximize triggers over the template bank (ms)
+  --bank-veto-bank-file BANK_VETO_BANK_FILE
+                        FIXME: ADD
+  --chisq-snr-threshold CHISQ_SNR_THRESHOLD
+                        Minimum SNR to calculate the power chisq
+  --chisq-bins CHISQ_BINS
+                        Number of frequency bins to use for power chisq. Specify an integer
+                        for a constant number of bins, or a function of template attributes.
+                        Math functions are allowed, ex.
+                        '10./math.sqrt((params.mass1+params.mass2)/100.)'. Non-integer values
+                        will be rounded down.
+  --chisq-threshold CHISQ_THRESHOLD
+                        FIXME: ADD
+  --chisq-delta CHISQ_DELTA
+                        FIXME: ADD
+  --autochi-number-points AUTOCHI_NUMBER_POINTS
+                        The number of points to use, in both directions ifdoing a two-sided
+                        auto-chisq, to calculate theauto-chisq statistic.
+  --autochi-stride AUTOCHI_STRIDE
+                        The gap, in sample points, between the points atwhich to calculate
+                        auto-chisq.
+  --autochi-two-phase   If given auto-chisq will be calculated by testing against both phases
+                        of the SNR time-series. If not given, only the phase matching the
+                        trigger will be used.
+  --autochi-onesided {left,right}
+                        Decide whether to calculate auto-chisq usingpoints on both sides of
+                        the trigger or only on oneside. If not given points on both sides will
+                        beused. If given, with either 'left' or 'right',only points on that
+                        side (right = forward in time,left = back in time) will be used.
+  --autochi-reverse-template
+                        If given, time-reverse the template beforecalculating the auto-chisq
+                        statistic. This willcome at additional computational cost as the
+                        SNRtime-series will need recomputing for the time-reversed template.
+  --autochi-max-valued  If given, store only the maximum value of the auto-chisq over all
+                        points tested. A disadvantage of this is that the mean value will not
+                        be known analytically.
+  --autochi-max-valued-dof INT
+                        If using --autochi-max-valued this value denotes the pre-calculated
+                        mean value that will be stored as the auto-chisq degrees-of-freedom
+                        value.
+  --downsample-factor DOWNSAMPLE_FACTOR
+                        Factor that determines the interval between the initial SNR sampling.
+                        If not set (or 1) no sparse sample is created, and the standard full
+                        SNR is calculated.
+  --upsample-threshold UPSAMPLE_THRESHOLD
+                        The fraction of the SNR threshold to check the sparse SNR sample.
+  --upsample-method {pruned_fft}
+                        The method to find the SNR points between the sparse SNR sample.
+  --user-tag TAG        This is used to identify FULL_DATA jobs for compatibility with
+                        pipedown post-processing. Option will be removed when no longer
+                        needed.
+  --keep-loudest-interval KEEP_LOUDEST_INTERVAL
+                        Window in seconds to maximize triggers over bank
+  --keep-loudest-num KEEP_LOUDEST_NUM
+                        Number of triggers to keep from each maximization interval
+  --gpu-callback-method GPU_CALLBACK_METHOD
+  --use-compressed-waveforms
+                        Use compressed waveforms from the bank file.
+  --waveform-decompression-method WAVEFORM_DECOMPRESSION_METHOD
+                        Method to be used decompress waveforms from the bank file.
+
+Options to select the method of PSD generation:
+  The options --psd-model, --psd-file, --asd-file, and --psd-estimation are mutually
+  exclusive.
+
+  --psd-model {AdVBNSOptimizedSensitivityP1200087,AdVDesignSensitivityP1200087,AdVEarlyHighSensitivityP1200087,AdVEarlyLowSensitivityP1200087,AdVLateHighSensitivityP1200087,AdVLateLowSensitivityP1200087,AdVMidHighSensitivityP1200087,AdVMidLowSensitivityP1200087,AdvVirgo,CosmicExplorerP1600143,CosmicExplorerPessimisticP1600143,CosmicExplorerWidebandP1600143,EinsteinTelescopeP1600143,GEO,GEOHF,KAGRA,KAGRADesignSensitivityT1600593,KAGRAEarlySensitivityT1600593,KAGRALateSensitivityT1600593,KAGRAMidSensitivityT1600593,KAGRAOpeningSensitivityT1600593,TAMA,Virgo,aLIGOBHBH20Deg,aLIGOBHBH20DegGWINC,aLIGOBNSOptimizedSensitivityP1200087,aLIGODesignSensitivityP1200087,aLIGOEarlyHighSensitivityP1200087,aLIGOEarlyLowSensitivityP1200087,aLIGOHighFrequency,aLIGOHighFrequencyGWINC,aLIGOLateHighSensitivityP1200087,aLIGOLateLowSensitivityP1200087,aLIGOMidHighSensitivityP1200087,aLIGOMidLowSensitivityP1200087,aLIGONSNSOpt,aLIGONSNSOptGWINC,aLIGONoSRMHighPower,aLIGONoSRMLowPower,aLIGONoSRMLowPowerGWINC,aLIGOQuantumBHBH20Deg,aLIGOQuantumHighFrequency,aLIGOQuantumNSNSOpt,aLIGOQuantumNoSRMHighPower,aLIGOQuantumNoSRMLowPower,aLIGOQuantumZeroDetHighPower,aLIGOQuantumZeroDetLowPower,aLIGOThermal,aLIGOZeroDetHighPower,aLIGOZeroDetHighPowerGWINC,aLIGOZeroDetLowPower,aLIGOZeroDetLowPowerGWINC,eLIGOModel,eLIGOShot,iLIGOModel,iLIGOSRD,iLIGOSeismic,iLIGOShot,iLIGOThermal,flat_unity}
+                        Get PSD from given analytical model.
+  --psd-file PSD_FILE   Get PSD using given PSD ASCII file
+  --asd-file ASD_FILE   Get PSD using given ASD ASCII file
+  --psd-inverse-length PSD_INVERSE_LENGTH
+                        (Optional) The maximum length of the impulse response of the
+                        overwhitening filter (s)
+  --psd-estimation {mean,median,median-mean}
+                        Measure PSD from the data, using given average method.
+  --psd-segment-length PSD_SEGMENT_LENGTH
+                        (Required for --psd-estimation) The segment length for PSD estimation
+                        (s)
+  --psd-segment-stride PSD_SEGMENT_STRIDE
+                        (Required for --psd-estimation) The separation between consecutive
+                        segments (s)
+  --psd-num-segments PSD_NUM_SEGMENTS
+                        (Optional, used only with --psd-estimation). If given, PSDs will be
+                        estimated using only this number of segments. If more data is given
+                        than needed to make this number of segments then excess data will not
+                        be used in the PSD estimate. If not enough data is given, the code
+                        will fail.
+  --psd-output PSD_OUTPUT
+                        (Optional) Write PSD to specified file
+
+Options for obtaining h(t):
+  These options are used for generating h(t) either by reading from a file or by generating
+  it. This is only needed if the PSD is to be estimated from the data, ie. if the --psd-
+  estimation option is given.
+
+  --gps-start-time GPS_START_TIME
+                        The gps start time of the data (integer seconds)
+  --gps-end-time GPS_END_TIME
+                        The gps end time of the data (integer seconds)
+  --strain-high-pass STRAIN_HIGH_PASS
+                        High pass frequency
+  --pad-data PAD_DATA   Extra padding to remove highpass corruption (integer seconds)
+  --taper-data TAPER_DATA
+                        Taper ends of data to zero using the supplied length as a window
+                        (integer seconds)
+  --sample-rate SAMPLE_RATE
+                        The sample rate to use for h(t) generation (integer Hz).
+  --channel-name CHANNEL_NAME
+                        The channel containing the gravitational strain data
+  --frame-cache FRAME_CACHE [FRAME_CACHE ...]
+                        Cache file containing the frame locations.
+  --frame-files FRAME_FILES [FRAME_FILES ...]
+                        list of frame files
+  --frame-type FRAME_TYPE
+                        (optional), replaces frame-files. Use datafind to get the needed frame
+                        file(s) of this type.
+  --frame-sieve FRAME_SIEVE
+                        (optional), Only use frame files where the URL matches the regular
+                        expression given.
+  --fake-strain {AdVBNSOptimizedSensitivityP1200087,AdVDesignSensitivityP1200087,AdVEarlyHighSensitivityP1200087,AdVEarlyLowSensitivityP1200087,AdVLateHighSensitivityP1200087,AdVLateLowSensitivityP1200087,AdVMidHighSensitivityP1200087,AdVMidLowSensitivityP1200087,AdvVirgo,CosmicExplorerP1600143,CosmicExplorerPessimisticP1600143,CosmicExplorerWidebandP1600143,EinsteinTelescopeP1600143,GEO,GEOHF,KAGRA,KAGRADesignSensitivityT1600593,KAGRAEarlySensitivityT1600593,KAGRALateSensitivityT1600593,KAGRAMidSensitivityT1600593,KAGRAOpeningSensitivityT1600593,TAMA,Virgo,aLIGOBHBH20Deg,aLIGOBHBH20DegGWINC,aLIGOBNSOptimizedSensitivityP1200087,aLIGODesignSensitivityP1200087,aLIGOEarlyHighSensitivityP1200087,aLIGOEarlyLowSensitivityP1200087,aLIGOHighFrequency,aLIGOHighFrequencyGWINC,aLIGOLateHighSensitivityP1200087,aLIGOLateLowSensitivityP1200087,aLIGOMidHighSensitivityP1200087,aLIGOMidLowSensitivityP1200087,aLIGONSNSOpt,aLIGONSNSOptGWINC,aLIGONoSRMHighPower,aLIGONoSRMLowPower,aLIGONoSRMLowPowerGWINC,aLIGOQuantumBHBH20Deg,aLIGOQuantumHighFrequency,aLIGOQuantumNSNSOpt,aLIGOQuantumNoSRMHighPower,aLIGOQuantumNoSRMLowPower,aLIGOQuantumZeroDetHighPower,aLIGOQuantumZeroDetLowPower,aLIGOThermal,aLIGOZeroDetHighPower,aLIGOZeroDetHighPowerGWINC,aLIGOZeroDetLowPower,aLIGOZeroDetLowPowerGWINC,eLIGOModel,eLIGOShot,iLIGOModel,iLIGOSRD,iLIGOSeismic,iLIGOShot,iLIGOThermal,zeroNoise}
+                        Name of model PSD for generating fake gaussian noise.
+  --fake-strain-seed FAKE_STRAIN_SEED
+                        Seed value for the generation of fake colored gaussian noise
+  --fake-strain-from-file FAKE_STRAIN_FROM_FILE
+                        File containing ASD for generating fake noise from it.
+  --injection-file INJECTION_FILE
+                        (optional) Injection file used to add waveforms into the strain
+  --sgburst-injection-file SGBURST_INJECTION_FILE
+                        (optional) Injection file used to add sine-Gaussian burst waveforms
+                        into the strain
+  --ringdown-injection-file RINGDOWN_INJECTION_FILE
+                        (optional) Injection file used to add ringdown-only waveforms into the
+                        strain.
+  --injection-scale-factor INJECTION_SCALE_FACTOR
+                        Divide injections by this factor before injecting into the data.
+  --gating-file GATING_FILE
+                        (optional) Text file of gating segments to apply. Format of each line
+                        is (all times in secs): gps_time zeros_half_width pad_half_width
+  --autogating-threshold SIGMA
+                        If given, find and gate glitches producing a deviation larger than
+                        SIGMA in the whitened strain time series.
+  --autogating-cluster SECONDS
+                        Length of clustering window for detecting glitches for autogating.
+  --autogating-width SECONDS
+                        Half-width of the gating window.
+  --autogating-taper SECONDS
+                        Taper the strain before and after each gating window over a duration
+                        of SECONDS.
+  --autogating-pad SECONDS
+                        Ignore the given length of whitened strain at the ends of a segment,
+                        to avoid filters ringing.
+  --normalize-strain NORMALIZE_STRAIN
+                        (optional) Divide frame data by constant.
+  --zpk-z ZPK_Z [ZPK_Z ...]
+                        (optional) Zero-pole-gain (zpk) filter strain. A list of zeros for
+                        transfer function
+  --zpk-p ZPK_P [ZPK_P ...]
+                        (optional) Zero-pole-gain (zpk) filter strain. A list of poles for
+                        transfer function
+  --zpk-k ZPK_K         (optional) Zero-pole-gain (zpk) filter strain. Transfer function gain
+  --witness-frame-type WITNESS_FRAME_TYPE
+                        (optional), frame type which will be use to query thewitness channel
+                        data.
+  --witness-tf-file WITNESS_TF_FILE
+                        an hdf file containing the transfer functions and the associated
+                        channel names
+  --witness-filter-length WITNESS_FILTER_LENGTH
+                        filter length in seconds for the transfer function
+
+Options for segmenting the strain:
+  These options are used to determine how to segment the strain into smaller chunks, and for
+  determining the portion of each to analyze for triggers.
+
+  --trig-start-time TRIG_START_TIME
+                        (optional) The gps time to start recording triggers
+  --trig-end-time TRIG_END_TIME
+                        (optional) The gps time to stop recording triggers
+  --segment-length SEGMENT_LENGTH
+                        The length of each strain segment in seconds.
+  --segment-start-pad SEGMENT_START_PAD
+                        The time in seconds to ignore of the beginning of each segment in
+                        seconds.
+  --segment-end-pad SEGMENT_END_PAD
+                        The time in seconds to ignore at the end of each segment in seconds.
+  --allow-zero-padding  Allow for zero padding of data to analyze requested times, if needed.
+  --filter-inj-only     Analyze only segments that contain an injection.
+  --injection-window INJECTION_WINDOW
+                        If using --filter-inj-only then only search for injections within +/-
+                        injection window of the injections's end time. This is useful to speed
+                        up a coherent search or a search where we initially filter at lower
+                        sample rate, and then filter at full rate where needed. NOTE: Reverts
+                        to full analysis if two injections are in the same segment.
+
+Options for selecting the processing scheme in this program.:
+  --processing-scheme PROCESSING_SCHEME
+                        The choice of processing scheme. Choices are ['mkl', 'numpy', 'cpu',
+                        'cuda']. (optional for CPU scheme) The number of execution threads can
+                        be indicated by cpu:NUM_THREADS, where NUM_THREADS is an integer. The
+                        default is a single thread. If the scheme is provided as cpu:env, the
+                        number of threads can be provided by the PYCBC_NUM_THREADS environment
+                        variable. If the environment variable is not set, the number of
+                        threads matches the number of logical cores.
+  --processing-device-id PROCESSING_DEVICE_ID
+                        (optional) ID of GPU to use for accelerated processing
+
+Options for selecting the FFT backend and controlling its performance in this program.:
+  --fft-backends [FFT_BACKENDS [FFT_BACKENDS ...]]
+                        Preference list of the FFT backends. Choices are: ['fftw', 'numpy']
+  --fftw-measure-level FFTW_MEASURE_LEVEL
+                        Determines the measure level used in planning FFTW FFTs; allowed
+                        values are: [0, 1, 2, 3]
+  --fftw-threads-backend FFTW_THREADS_BACKEND
+                        Give 'openmp', 'pthreads' or 'unthreaded' to specify which threaded
+                        FFTW to use
+  --fftw-input-float-wisdom-file FFTW_INPUT_FLOAT_WISDOM_FILE
+                        Filename from which to read single-precision wisdom
+  --fftw-input-double-wisdom-file FFTW_INPUT_DOUBLE_WISDOM_FILE
+                        Filename from which to read double-precision wisdom
+  --fftw-output-float-wisdom-file FFTW_OUTPUT_FLOAT_WISDOM_FILE
+                        Filename to which to write single-precision wisdom
+  --fftw-output-double-wisdom-file FFTW_OUTPUT_DOUBLE_WISDOM_FILE
+                        Filename to which to write double-precision wisdom
+  --fftw-import-system-wisdom
+                        If given, call fftw[f]_import_system_wisdom()
+
+Options for selecting optimization-specific settings:
+  --cpu-affinity CPU_AFFINITY
+                        A set of CPUs on which to run, specified in a format suitable to pass
+                        to taskset.
+  --cpu-affinity-from-env CPU_AFFINITY_FROM_ENV
+                        The name of an enivornment variable containing a set of CPUs on which
+                        to run, specified in a format suitable to pass to taskset.
+
+Options for controlling weave:
+  --per-process-weave-cache
+                        If given, each process will use a separate directory for weave
+                        compilation. This is slower, but safer if several instances may be
+                        starting on the same machine at the same time.
+  --clear-weave-cache-at-start
+                        If given, delete the contents of the weave cache when the process
+                        starts
+  --clear-weave-cache-at-end
+                        If given, delete the contents of the weave cache when the process
+                        exits
+  --fixed-weave-cache   If given, use fixed directory PWD/pycbc_inspiral for the weave cache
+
+Options that, if injections are present in this run, are responsible for performing pre-checks between injections in the data being filtered and the current search template to determine if the template has any chance of actually detecting the injection. The parameters of this test are given by the various options below. The --injection-filter-rejector-chirp-time-window and --injection-filter-rejector-match-threshold options need to be provided if those tests are desired. Other options will take default values unless overriden. More details on these options follow.:
+  --injection-filter-rejector-chirp-time-window INJECTION_FILTER_REJECTOR_CHIRP_TIME_WINDOW
+                        If this value is not None and an injection file is given then we will
+                        calculate the difference in chirp time (tau_0) between the template
+                        and each injection in the analysis segment. If the difference is
+                        greate than this threshold for all injections then filtering is not
+                        performed. By default this will be None.
+  --injection-filter-rejector-match-threshold INJECTION_FILTER_REJECTOR_MATCH_THRESHOLD
+                        If this value is not None and an injection file is provided then we
+                        will calculate a 'coarse match' between the template and each
+                        injection in the analysis segment. If the match is less than this
+                        threshold for all injections then filtering is not performed.
+                        Parameters for the 'coarse match' follow. By default this value will
+                        be None.
+  --injection-filter-rejector-coarsematch-deltaf INJECTION_FILTER_REJECTOR_COARSEMATCH_DELTAF
+                        If injections are present and a match threshold is provided, this
+                        option specifies the frequency spacing that will be used for
+                        injections, templates and PSD when computing the 'coarse match'.
+                        Templates will be generated directly with this spacing. The PSD and
+                        injections will be resampled.
+  --injection-filter-rejector-coarsematch-fmax INJECTION_FILTER_REJECTOR_COARSEMATCH_FMAX
+                        If injections are present and a match threshold is provided, this
+                        option specifies the maximum frequency that will be used for
+                        injections, templates and PSD when computing the 'coarse match'.
+                        Templates will be generated directly with this max frequency. The PSD
+                        and injections' frequency series will be truncated.
+  --injection-filter-rejector-seg-buffer INJECTION_FILTER_REJECTOR_SEG_BUFFER
+                        If injections are present and either a match threshold or a chirp-time
+                        window is given, we will determine if injections are 'in' the
+                        specified analysis chunk by using the end times. If this value is non-
+                        zero the analysis chunk is extended on both sides by this amount
+                        before determining if injections are within the given window.
+  --injection-filter-rejector-f-lower INJECTION_FILTER_REJECTOR_F_LOWER
+                        If injections are present and either a match threshold or a chirp-time
+                        window is given, this value is used to set the lower frequency for
+                        determine chirp times or for calculating matches. If this value is
+                        None the lower frequency used for the full matched-filter is used.
+                        Otherwise this value is used.
+
+Sine-Gaussian Chisq:
+  --sgchisq-snr-threshold SGCHISQ_SNR_THRESHOLD
+                        Minimum SNR threshold to use SG chisq
+  --sgchisq-locations SGCHISQ_LOCATIONS [SGCHISQ_LOCATIONS ...]
+                        The frequencies and quality factors of the sine-gaussians to use. The
+                        format is 'region-boolean:q1-offset1,q2-offset2'.The offset is
+                        relative to the end frequency of the approximant.The region is a
+                        boolean expresion such as 'mtotal>40' and indicates where to apply
+                        this set of sine-Gaussians.
