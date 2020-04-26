@@ -22,7 +22,7 @@ pycbc_inspiral --segment-end-pad 64  \
 --frame-type H1_HOFT_C00 \
 --injection-file HL-INJECTIONS_3-1126086042-345600.xml \
 --bank-file Feb12.h5 \
---output multiple-injections-output-4-days.h5 \
+--output multiple-injections-output-4-days.hdf \
 --verbose
 
 #--trig-start-time 1126086242 \
