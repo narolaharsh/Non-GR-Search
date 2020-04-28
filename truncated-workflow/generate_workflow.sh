@@ -15,8 +15,10 @@ pycbc_make_coinc_search_workflow \
         executables.ini \
     --config-overrides \
         "results_page:output-path:${OUTPUT_PATH}" \
+        "workflow:end-time:1126093237" \
     --config-delete \
         'workflow-coincidence' \
-        'statmap_inj' \
-        'foreground_censor' \
-        'combine_statmap' 
+        
+
+#1126093237 : 12-09-15 11:40:20
+#two hours of data
