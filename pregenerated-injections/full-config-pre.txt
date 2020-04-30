@@ -1,0 +1,978 @@
+[workflow]
+file-retention-level = all_triggers
+h1-channel-name = H1:GDS-CALIB_STRAIN
+l1-channel-name = L1:GDS-CALIB_STRAIN
+start-time = 1126086042
+end-time = 1126431642
+
+[workflow-datafind]
+datafind-method = AT_RUNTIME_SINGLE_FRAMES
+datafind-check-segment-gaps = raise_error
+datafind-check-frames-exist = raise_error
+datafind-check-segment-summary = warn
+datafind-h1-frame-type = H1_HOFT_C00
+datafind-l1-frame-type = L1_HOFT_C00
+
+[workflow-segments]
+segments-method = ALL_SINGLE_IFO_TIME
+segments-h1-science-name = H1:DMT-ANALYSIS_READY:1
+segments-l1-science-name = L1:DMT-ANALYSIS_READY:1
+segments-database-url = https://segments.ligo.org
+segments-science-veto = 1
+segments-final-veto-group = 12H
+segments-veto-groups = 
+segments-veto-definer-url = https://git.ligo.org/detchar/veto-definitions/raw/master/cbc/O1/H1L1-CBC_VETO_DEFINER_C00_O1_1126051217-11203200.xml
+
+[workflow-tmpltbank]
+tmpltbank-method = PREGENERATED_BANK
+tmpltbank-pregenerated-bank = /home/soumen.roy/coincidence/LVT151012/sbank3/output/H1L1V1-H5ADD_CYCLE12_FINAL-900000000-10000.h5
+
+[workflow-splittable]
+splittable-method = IN_WORKFLOW
+splittable-exe-tag = splitbank
+
+[workflow-splittable-full_data]
+splittable-num-banks = 8
+
+[workflow-splittable-injections]
+splittable-num-banks = 2
+
+[workflow-matchedfilter]
+matchedfilter-method = WORKFLOW_INDEPENDENT_IFOS
+min-analysis-segments = 1
+min-analysis-length = 528
+max-analysis-segments = 5
+output-type = hdf
+plot-throughput = 
+
+[workflow-coincidence]
+do-trigger-fitting = 
+
+[workflow-coincidence-full]
+parallelization-factor = 20
+
+[workflow-coincidence-inj]
+parallelization-factor = 5
+
+[workflow-psd]
+parallelization-factor = 10
+
+[workflow-gating]
+gating-method = PREGENERATED_FILE
+
+[llwadd]
+
+[segments_from_cats]
+
+[ligolw_combine_segments]
+
+[splitbank]
+random-sort = 
+random-seed = 666
+
+[inspiral]
+sgchisq-snr-threshold = 6.0
+sgchisq-locations = "mtotal>40:20-30,20-45,20-60,20-75,20-90,20-105,20-120"
+pad-data = 8
+strain-high-pass = 15
+sample-rate = 2048
+segment-length = 512
+segment-start-pad = 144
+segment-end-pad = 16
+allow-zero-padding = 
+taper-data = 1
+psd-estimation = median
+psd-segment-length = 16
+psd-segment-stride = 8
+psd-inverse-length = 16
+psd-num-segments = 63
+autogating-threshold = 100
+autogating-cluster = 0.5
+autogating-width = 0.25
+autogating-taper = 0.25
+autogating-pad = 16
+enable-bank-start-frequency = 
+low-frequency-cutoff = 30
+approximant = 'SEOBNRv4_ROM'
+order = -1
+snr-threshold = 5.5
+cluster-method = window
+cluster-window = 1
+cluster-function = symmetric
+chisq-bins = "0.72*get_freq('fSEOBNRv4Peak',params.mass1,params.mass2,params.spin1z,params.spin2z)**0.7"
+newsnr-threshold = 5
+filter-inj-only = 
+injection-window = 4.5
+processing-scheme = cpu
+
+[inspiral-h1]
+channel-name = H1:GDS-CALIB_STRAIN
+
+[inspiral-l1]
+channel-name = L1:GDS-CALIB_STRAIN
+
+[calculate_psd]
+cores = 16
+low-frequency-cutoff = 30
+pad-data = 8
+strain-high-pass = 15
+sample-rate = 2048
+segment-length = 512
+segment-start-pad = 144
+segment-end-pad = 16
+psd-estimation = median
+psd-segment-length = 16
+psd-segment-stride = 8
+psd-num-segments = 63
+taper-data = 1
+autogating-threshold = 100
+autogating-cluster = 0.5
+autogating-width = 0.25
+autogating-taper = 0.25
+autogating-pad = 16
+
+[merge_psds]
+
+[calculate_psd-h1]
+channel-name = H1:GDS-CALIB_STRAIN
+
+[calculate_psd-l1]
+channel-name = L1:GDS-CALIB_STRAIN
+
+[hdf_trigger_merge]
+
+[bank2hdf]
+
+[fit_by_template]
+fit-function = exponential
+sngl-stat = newsnr_sgveto
+stat-threshold = 6.
+prune-param = mtotal
+log-prune-param = 
+prune-bins = 2
+prune-number = 2
+
+[fit_over_param]
+fit-param = template_duration
+f-lower = 30
+log-param = 
+regression-method = tricube
+smoothing-width = 0.2
+
+[distribute_background_bins]
+
+[coinc]
+coinc-threshold = 0.005
+strict-coinc-time = 
+ranking-statistic = phasetd_exp_fit_stat_sgveto
+statistic-files = file://localhost/cvmfs/oasis.opensciencegrid.org/ligo/sw/pycbc/statistic-files/v1/H1L1-PHASE_TIME_AMP_v1.hdf
+
+[coinc-full]
+timeslide-interval = 0.1
+decimation-factor = 5000
+loudest-keep-value = 8.5
+
+[combine_statmap]
+cluster-window = 10.0
+
+[foreground_censor]
+strict-coinc-time = 
+
+[hdfinjfind]
+injection-window = 2.0
+optimal-snr-column = H1:alpha L1:beta
+
+[workflow-results]
+max-hierarchical-removal = 0
+
+[workflow-ifos]
+h1 = 
+l1 = 
+
+[datafind]
+urltype = file
+
+[workflow-minifollowups]
+num-events = 5
+
+[workflow-sngl_minifollowups]
+num-sngl-events = 10
+
+[workflow-sngl_minifollowups-noncoinc]
+section-header = loudest_noncoinc_time
+
+[workflow-sngl_minifollowups-shortdur]
+section-header = loudest_all_time_duration_lt_0.5_sec
+
+[workflow-sngl_minifollowups-mediumdur]
+section-header = loudest_all_time_duration_in_0.5_1.0_sec
+
+[workflow-sngl_minifollowups-longdur]
+section-header = loudest_all_time_duration_gt_1.0_sec
+
+[workflow-injection_minifollowups]
+num-events = 10
+subsection-suffix = with_ifar_lt_1_year
+
+[foreground_minifollowup]
+
+[singles_minifollowup]
+ranking-statistic = newsnr_sgveto
+
+[singles_minifollowup-noncoinc]
+non-coinc-time-only = 
+
+[singles_minifollowup-shortdur]
+maximum-duration = 0.5
+
+[singles_minifollowup-mediumdur]
+minimum-duration = 0.5
+maximum-duration = 1.0
+
+[singles_minifollowup-longdur]
+minimum-duration = 1.0
+
+[injection_minifollowup]
+ifar-threshold = 1
+
+[page_snglinfo]
+ranking-statistic = newsnr_sgveto
+
+[page_coincinfo]
+
+[single_template_plot]
+
+[single_template_plot-p1]
+window = 0.1
+
+[plot_trigger_timeseries]
+
+[plot_trigger_timeseries-snr10]
+window = 10
+plot-type = snr
+log-y-axis = 
+
+[plot_trigger_timeseries-newsnr10]
+window = 10
+plot-type = newsnr
+
+[plot_trigger_timeseries-snr1]
+window = 1
+plot-type = snr
+log-y-axis = 
+
+[plot_trigger_timeseries-newsnr1]
+window = 1
+plot-type = newsnr
+
+[plot_singles_timefreq]
+f-low = 30
+rank = newsnr
+num-loudest = 20
+approximant = 'SEOBNRv4_ROM'
+strain-high-pass = 15
+sample-rate = 2048
+pad-data = 8
+
+[single_template]
+segment-length = 512
+segment-start-pad = 144
+segment-end-pad = 16
+psd-estimation = median
+psd-segment-length = 16
+psd-segment-stride = 8
+psd-inverse-length = 16
+chisq-bins = "0.72*get_freq('fSEOBNRv4Peak',params.mass1,params.mass2,params.spin1z,params.spin2z)**0.7"
+low-frequency-cutoff = 30
+approximant = 'SEOBNRv4_ROM'
+order = -1
+processing-scheme = cpu
+window = 10
+psd-num-segments = 63
+taper-data = 1
+allow-zero-padding = 
+autogating-threshold = 100
+autogating-cluster = 0.5
+autogating-width = 0.25
+autogating-taper = 0.25
+autogating-pad = 16
+minimum-chisq-bins = 3
+strain-high-pass = 15
+sample-rate = 2048
+pad-data = 8
+
+[single_template-inj_params_inverted]
+injection-scale-factor = -1
+
+[single_template-inj_params_noinj]
+injection-scale-factor = 1000000
+
+[plot_waveform]
+low-frequency-cutoff = 30
+waveform-length = 512
+sample-rate = 2048
+approximant = 'SEOBNRv4_ROM'
+
+[plot_sensitivity]
+dist-bins = 50
+integration-method = pylal
+
+[s-mchirp]
+bins = 0.8 1.74 8.07 14.92 21.77 100 218
+
+[s-mtotal]
+bins = 2 4 27.25 51.5 75.75 100 500
+
+[s-spin]
+bins = -1 -0.4 0.4 1
+
+[stat]
+sig-bins = 7 7.5 8 8.5 9 9.5 10 10.5 11 11.5 12 12.5 13 13.5 14
+
+[plot_sensitivity-sub_mtotal_stat]
+bin-type = total_mass
+bins = 2 4 27.25 51.5 75.75 100 500
+sig-bins = 7 7.5 8 8.5 9 9.5 10 10.5 11 11.5 12 12.5 13 13.5 14
+sig-type = stat
+
+[plot_sensitivity-sub_spin_stat]
+bin-type = spin
+bins = -1 -0.4 0.4 1
+sig-bins = 7 7.5 8 8.5 9 9.5 10 10.5 11 11.5 12 12.5 13 13.5 14
+sig-type = stat
+
+[plot_foundmissed]
+
+[plot_singles]
+min-snr = 6
+
+[plot_singles-endtime_duration_snr]
+x-var = end_time
+y-var = template_duration
+log-y = 
+z-var = "max(snr)"
+
+[plot_singles-endtime_duration_newsnr]
+x-var = end_time
+y-var = template_duration
+log-y = 
+z-var = "max(newsnr_sgveto)"
+min-z = 6
+
+[plot_singles-endtime_duration_density]
+x-var = end_time
+y-var = template_duration
+log-y = 
+z-var = density
+
+[plot_singles-mtotal_effspin_newsnr]
+x-var = mtotal
+log-x = 
+y-var = effective_spin
+z-var = "max(newsnr_sgveto)"
+min-z = 6
+
+[plot_singles-duration_effspin_newsnr]
+x-var = template_duration
+log-x = 
+y-var = effective_spin
+z-var = "max(newsnr_sgveto)"
+min-z = 6
+
+[plot_singles-eta_effspin_newsnr]
+x-var = eta
+y-var = effective_spin
+z-var = "max(newsnr_sgveto)"
+min-z = 6
+
+[plot_singles-mtotal_eta_newsnr]
+x-var = mtotal
+log-x = 
+y-var = eta
+z-var = "max(newsnr_sgveto)"
+min-z = 6
+
+[plot_range]
+
+[plot_range-summ]
+mass1 = 1.4
+mass2 = 1.4
+approximant = SPAtmplt
+
+[plot_range-nsbh]
+mass1 = 1.4
+mass2 = 10
+approximant = SEOBNRv4_ROM
+
+[plot_range-bbh1]
+mass1 = 10
+mass2 = 10
+approximant = SEOBNRv4_ROM
+
+[plot_range-bbh2]
+mass1 = 20
+mass2 = 20
+approximant = SEOBNRv4_ROM
+
+[plot_range-bbh3]
+mass1 = 30
+mass2 = 30
+approximant = SEOBNRv4_ROM
+
+[plot_range-bbh4]
+mass1 = 80
+mass2 = 80
+approximant = SEOBNRv4_ROM
+
+[contours]
+newsnr-contours = 5 7 9 11 13
+
+[plot_snrchi]
+min-snr = 6.0
+newsnr-contours = 5 7 9 11 13
+
+[plot_coinc_snrchi]
+newsnr-contours = 5 7 9 11 13
+
+[plot_coinc_snrchi-inj]
+
+[plot_coinc_snrchi-bkg]
+background-front = 
+
+[plot_coinc_snrchi-spin]
+colorbar-choice = effective_spin
+
+[plot_coinc_snrchi-mchirp]
+colorbar-choice = mchirp
+
+[plot_coinc_snrchi-eta]
+colorbar-choice = eta
+
+[plot_coinc_snrchi-sg]
+chisq-choice = sg
+
+[plot_hist]
+
+[plot_hist-summ_snr]
+x-var = snr
+x-min = 6
+x-max = 100
+
+[plot_hist-summ_newsnr]
+x-var = newsnr
+x-min = 6
+x-max = 15
+
+[plot_binnedhist]
+sngl-stat = newsnr_sgveto
+fit-function = exponential
+stat-threshold = 6.5
+prune-param = mtotal
+log-prune-param = 
+prune-bins = 2
+prune-number = 2
+
+[plot_binnedhist-duration]
+bin-param = template_duration
+f-lower = 30
+num-bins = 7
+bin-spacing = log
+
+[plot_spectrum]
+psd-model = aLIGOZeroDetHighPower
+
+[page_ifar]
+decimation-factor = 5000
+
+[page_ifar-open_box]
+open-box = 
+
+[page_vetotable]
+
+[plot_bank]
+log-x = 
+log-y = 
+
+[page_segtable]
+
+[page_segplot]
+
+[plot_snrifar]
+
+[page_foreground]
+
+[page_foreground-xmlloudest]
+num-coincs-to-write = 25
+
+[page_injections]
+
+[plot_segments]
+
+[plot_gating]
+
+[plot_snrratehist]
+
+[plot_throughput]
+
+[workflow-injections]
+injections-method = PREGENERATED
+strip-injections = 
+compute-optimal-snr = 
+injections-pregenerated-file = /home/narola.bharatbhai/Non-GR-search/pregenerated-injections/HL-INJECTIONS_123408-1126086042-345600.xml
+
+[strip_injections]
+
+[optimal_snr]
+snr-columns = H1:alpha L1:beta
+f-low = 30
+seg-length = 512
+sample-rate = 16384
+cores = 4
+
+[inj_cut]
+snr-columns = H1:alpha L1:beta
+snr-threshold = 4.0
+
+[results_page]
+analysis-title = "Check Sbank"
+analysis-subtitle = "O1 Analysis test (C00, 1 day, 12 Oct)"
+output-path = /home/narola.bharatbhai/public_html/LSC/o1/pregenerated-injections
+
+[executables]
+average_psd = /home/soumen.roy/src/npycbc/bin/pycbc_average_psd
+bank2hdf = /home/soumen.roy/src/npycbc/bin/pycbc_coinc_bank2hdf
+calculate_psd = /home/soumen.roy/src/npycbc/bin/pycbc_calculate_psd
+coinc = /home/soumen.roy/src/npycbc/bin/pycbc_coinc_findtrigs
+combine_statmap = /home/soumen.roy/src/npycbc/bin/pycbc_combine_statmap
+distribute_background_bins = /home/soumen.roy/src/npycbc/bin/pycbc_distribute_background_bins
+fit_by_template = /home/soumen.roy/src/npycbc/bin/pycbc_fit_sngls_by_template
+fit_over_param = /home/soumen.roy/src/npycbc/bin/pycbc_fit_sngls_over_param
+foreground_censor = /home/soumen.roy/src/npycbc/bin/pycbc_foreground_censor
+hdfinjfind = /home/soumen.roy/src/npycbc/bin/pycbc_coinc_hdfinjfind
+hdf_trigger_merge = /home/soumen.roy/src/npycbc/bin/pycbc_coinc_mergetrigs
+inj_cut = /home/soumen.roy/src/npycbc/bin/pycbc_inj_cut
+injections = /home/soumen.roy/src/npycbc/opt/lalsuite/bin/lalapps_inspinj
+inspiral = /home/soumen.roy/src/npycbc/bin/pycbc_inspiral
+ligolw_combine_segments = /home/soumen.roy/src/npycbc/bin/ligolw_combine_segments
+llwadd = /home/soumen.roy/src/npycbc/bin/ligolw_add
+merge_psds = /home/soumen.roy/src/npycbc/bin/pycbc_merge_psds
+optimal_snr = /home/soumen.roy/src/npycbc/bin/pycbc_optimal_snr
+page_foreground = /home/soumen.roy/src/npycbc/bin/pycbc_page_foreground
+page_ifar = /home/soumen.roy/src/npycbc/bin/pycbc_page_ifar
+page_injections = /home/soumen.roy/src/npycbc/bin/pycbc_page_injtable
+page_segplot = /home/soumen.roy/src/npycbc/bin/pycbc_page_segplot
+page_segtable = /home/soumen.roy/src/npycbc/bin/pycbc_page_segtable
+page_vetotable = /home/soumen.roy/src/npycbc/bin/pycbc_page_vetotable
+plot_bank = /home/soumen.roy/src/npycbc/bin/pycbc_plot_bank_bins
+plot_binnedhist = /home/soumen.roy/src/npycbc/bin/pycbc_fit_sngls_binned
+plot_coinc_snrchi = /home/soumen.roy/src/npycbc/bin/pycbc_page_coinc_snrchi
+plot_foundmissed = /home/soumen.roy/src/npycbc/bin/pycbc_page_foundmissed
+plot_gating = /home/soumen.roy/src/npycbc/bin/pycbc_plot_gating
+plot_hist = /home/soumen.roy/src/npycbc/bin/pycbc_plot_hist
+plot_range = /home/soumen.roy/src/npycbc/bin/pycbc_plot_range
+plot_segments = /home/soumen.roy/src/npycbc/bin/pycbc_page_segments
+plot_sensitivity = /home/soumen.roy/src/npycbc/bin/pycbc_page_sensitivity
+plot_singles = /home/soumen.roy/src/npycbc/bin/pycbc_plot_singles_vs_params
+plot_snrchi = /home/soumen.roy/src/npycbc/bin/pycbc_page_snrchi
+plot_snrifar = /home/soumen.roy/src/npycbc/bin/pycbc_page_snrifar
+plot_spectrum = /home/soumen.roy/src/npycbc/bin/pycbc_plot_psd_file
+plot_throughput = /home/soumen.roy/src/npycbc/bin/pycbc_plot_throughput
+results_page = /home/soumen.roy/src/npycbc/bin/pycbc_make_html_page
+segment_query = /home/soumen.roy/src/npycbc/bin/ligolw_segment_query_dqsegdb
+segments_from_cats = /home/soumen.roy/src/npycbc/bin/ligolw_segments_from_cats_dqsegdb
+splitbank = /home/soumen.roy/src/npycbc/bin/pycbc_hdf5_splitbank
+statmap = /home/soumen.roy/src/npycbc/bin/pycbc_coinc_statmap
+statmap_inj = /home/soumen.roy/src/npycbc/bin/pycbc_coinc_statmap_inj
+strip_injections = /home/soumen.roy/src/npycbc/bin/pycbc_strip_injections
+tmpltbank = /home/soumen.roy/src/npycbc/bin/pycbc_geom_nonspinbank
+foreground_minifollowup = /home/soumen.roy/src/npycbc/bin/pycbc_foreground_minifollowup
+injection_minifollowup = /home/soumen.roy/src/npycbc/bin/pycbc_injection_minifollowup
+singles_minifollowup = /home/soumen.roy/src/npycbc/bin/pycbc_sngl_minifollowup
+page_injinfo = /home/soumen.roy/src/npycbc/bin/pycbc_page_injinfo
+page_coincinfo = /home/soumen.roy/src/npycbc/bin/pycbc_page_coincinfo
+page_snglinfo = /home/soumen.roy/src/npycbc/bin/pycbc_page_snglinfo
+plot_trigger_timeseries = /home/soumen.roy/src/npycbc/bin/pycbc_plot_trigger_timeseries
+single_template_plot = /home/soumen.roy/src/npycbc/bin/pycbc_single_template_plot
+single_template = /home/soumen.roy/src/npycbc/bin/pycbc_single_template
+plot_singles_timefreq = /home/soumen.roy/src/npycbc/bin/pycbc_plot_singles_timefreq
+plot_snrratehist = /home/soumen.roy/src/npycbc/bin/pycbc_page_snrratehist
+plot_waveform = /home/soumen.roy/src/npycbc/bin/pycbc_plot_waveform
+
+[pegasus_profile]
+condor|+InitialRequestMemory = 1980
+condor|request_memory = ifthenelse( (LastHoldReasonCode=!=34 && LastHoldReasonCode=!=26), InitialRequestMemory, int(1.5 * NumJobStarts * MemoryUsage) )
+condor|periodic_release = ((HoldReasonCode =?= 34) || (HoldReasonCode =?= 26))
+condor|request_cpus = 1
+pycbc|installed = True
+hints|execution.site = local
+
+[pegasus_profile-calculate_psd]
+condor|+InitialRequestMemory = 8000
+condor|request_cpus = 16
+dagman|priority = 700
+dagman|retry = 10
+
+[pegasus_profile-injections]
+dagman|priority = 700
+
+[pegasus_profile-bank2hdf]
+dagman|priority = 700
+
+[pegasus_profile-merge_psds]
+dagman|priority = 700
+
+[pegasus_profile-ligolw_combine_segments]
+dagman|priority = 700
+
+[pegasus_profile-strip_injections]
+dagman|priority = 700
+
+[pegasus_profile-llwadd]
+dagman|priority = 700
+
+[pegasus_profile-splitbank]
+dagman|priority = 700
+
+[pegasus_profile-foreground_censor]
+dagman|priority = 500
+
+[pegasus_profile-foreground_minifollowup]
+dagman|priority = 500
+
+[pegasus_profile-injection_minifollowup]
+dagman|priority = 500
+
+[pegasus_profile-coinc]
+dagman|priority = 500
+condor|+InitialRequestMemory = 3000
+
+[pegasus_profile-distribute_background_bins]
+dagman|priority = 500
+condor|+InitialRequestMemory = 6000
+
+[pegasus_profile-fit_by_template]
+dagman|priority = 500
+condor|+InitialRequestMemory = 10000
+
+[pegasus_profile-hdf_trigger_merge]
+dagman|priority = 500
+condor|+InitialRequestMemory = 4000
+
+[pegasus_profile-inspiral]
+condor|periodic_hold = (JobStatus == 2) && ((CurrentTime - EnteredCurrentStatus) > (2 * 86400))
+condor|periodic_release = ((HoldReasonCode =?= 34) || (HoldReasonCode =?= 26)) || ((JobStatus == 5) && (HoldReasonCode == 3) && (NumJobStarts < 5) && ((CurrentTime - EnteredCurrentStatus) > (300)))
+condor|periodic_remove = (NumJobStarts >= 5)
+condor|request_disk = 2000
+
+[pegasus_profile-optimal_snr]
+condor|request_cpus = 4
+condor|+InitialRequestMemory = 10000
+dagman|priority = 700
+
+[pegasus_profile-page_snglinfo]
+condor|+InitialRequestMemory = 4000
+
+[pegasus_profile-plot_binnedhist]
+condor|+InitialRequestMemory = 8000
+
+[pegasus_profile-plot_coinc_snrchi]
+condor|+InitialRequestMemory = 8000
+
+[pegasus_profile-plot_hist]
+condor|+InitialRequestMemory = 8000
+
+[pegasus_profile-plot_singles]
+condor|+InitialRequestMemory = 12000
+
+[pegasus_profile-plot_snrchi]
+condor|+InitialRequestMemory = 8000
+
+[pegasus_profile-plot_spectrum]
+condor|+InitialRequestMemory = 3000
+
+[pegasus_profile-plot_trigger_timeseries]
+condor|+InitialRequestMemory = 4000
+
+[pegasus_profile-singles_minifollowup]
+condor|+InitialRequestMemory = 6000
+dagman|priority = 500
+
+[pegasus_profile-single_template]
+condor|+InitialRequestMemory = 3000
+
+[pegasus_profile-single_template_plot]
+condor|+InitialRequestMemory = 3000
+
+[pegasus_profile-statmap]
+condor|+InitialRequestMemory = 10000
+dagman|priority = 500
+
+[pegasus_profile-statmap_inj]
+condor|+InitialRequestMemory = 10000
+dagman|priority = 500
+
+[pegasus_profile-hdfinjfind]
+condor|+InitialRequestMemory = 5000
+dagman|priority = 500
+
+[coinc-fullinj]
+timeslide-interval = 0.1
+cluster-window = 10.0
+loudest-keep-value = 8.5
+
+[coinc-injfull]
+timeslide-interval = 0.1
+cluster-window = 10.0
+loudest-keep-value = 8.5
+
+[statmap]
+veto-window = 0.100
+cluster-window = 10.0
+
+[statmap_inj]
+veto-window = 0.100
+cluster-window = 10.0
+
+[single_template-h1]
+frame-type = H1_HOFT_C00
+channel-name = H1:GDS-CALIB_STRAIN
+
+[plot_singles_timefreq-h1]
+frame-type = H1_HOFT_C00
+channel-name = H1:GDS-CALIB_STRAIN
+
+[single_template-l1]
+frame-type = L1_HOFT_C00
+channel-name = L1:GDS-CALIB_STRAIN
+
+[plot_singles_timefreq-l1]
+frame-type = L1_HOFT_C00
+channel-name = L1:GDS-CALIB_STRAIN
+
+[plot_sensitivity-all_mchirp]
+bin-type = mchirp
+bins = 0.8 1.74 8.07 14.92 21.77 100 218
+sig-type = ifar
+
+[plot_sensitivity-summary_mchirp]
+bin-type = mchirp
+bins = 0.8 1.74 8.07 14.92 21.77 100 218
+sig-type = ifar
+
+[plot_sensitivity-all_mchirpvt]
+bin-type = mchirp
+bins = 0.8 1.74 8.07 14.92 21.77 100 218
+dist-type = vt
+sig-type = ifar
+log-dist = 
+
+[plot_sensitivity-summary_mchirpvt]
+bin-type = mchirp
+bins = 0.8 1.74 8.07 14.92 21.77 100 218
+dist-type = vt
+sig-type = ifar
+log-dist = 
+
+[plot_sensitivity-sub_mtotal]
+bin-type = total_mass
+bins = 2 4 27.25 51.5 75.75 100 500
+sig-type = ifar
+
+[plot_sensitivity-all_mtotal]
+bin-type = total_mass
+bins = 2 4 27.25 51.5 75.75 100 500
+sig-type = ifar
+
+[plot_sensitivity-sub_spin]
+bin-type = spin
+bins = -1 -0.4 0.4 1
+sig-type = ifar
+
+[plot_sensitivity-all_spin]
+bin-type = spin
+bins = -1 -0.4 0.4 1
+sig-type = ifar
+
+[plot_sensitivity-sub_mchirp_stat]
+bin-type = mchirp
+bins = 0.8 1.74 8.07 14.92 21.77 100 218
+sig-bins = 7 7.5 8 8.5 9 9.5 10 10.5 11 11.5 12 12.5 13 13.5 14
+sig-type = stat
+
+[plot_sensitivity-all_mchirp_stat]
+bin-type = mchirp
+bins = 0.8 1.74 8.07 14.92 21.77 100 218
+sig-bins = 7 7.5 8 8.5 9 9.5 10 10.5 11 11.5 12 12.5 13 13.5 14
+sig-type = stat
+
+[plot_foundmissed-sub_mchirp_sub_grad_exc]
+distance-type = decisive_optimal_snr
+axis-type = mchirp
+log-x = 
+far-type = exclusive
+log-distance = 
+gradient-far = 
+
+[plot_foundmissed-all_mchirp_grad_exc]
+distance-type = decisive_optimal_snr
+axis-type = mchirp
+log-x = 
+far-type = exclusive
+log-distance = 
+gradient-far = 
+
+[plot_foundmissed-sub_mchirp_grad]
+distance-type = decisive_optimal_snr
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+
+[plot_foundmissed-all_mchirp_grad]
+distance-type = decisive_optimal_snr
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+
+[plot_foundmissed-summary]
+distance-type = decisive_optimal_snr
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+
+[plot_foundmissed-sub_mchirp_gradm]
+distance-type = decisive_optimal_snr
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[plot_foundmissed-all_mchirp_gradm]
+distance-type = decisive_optimal_snr
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[plot_foundmissed-summarym]
+distance-type = decisive_optimal_snr
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[plot_foundmissed-sub_time_grad]
+distance-type = decisive_optimal_snr
+axis-type = time
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[plot_foundmissed-all_time_grad]
+distance-type = decisive_optimal_snr
+axis-type = time
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[plot_foundmissed-sub_mchirp_grad2]
+distance-type = decisive_distance
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+
+[plot_foundmissed-all_mchirp_grad2]
+distance-type = decisive_distance
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+
+[plot_foundmissed-sub_mchirp_gradm2]
+distance-type = decisive_distance
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[plot_foundmissed-all_mchirp_gradm2]
+distance-type = decisive_distance
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[plot_foundmissed-sub_mchirp_grad3]
+distance-type = dec_chirp_distance
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+
+[plot_foundmissed-all_mchirp_grad3]
+distance-type = dec_chirp_distance
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+
+[plot_foundmissed-sub_mchirp_gradm3]
+distance-type = dec_chirp_distance
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[plot_foundmissed-all_mchirp_gradm3]
+distance-type = dec_chirp_distance
+axis-type = mchirp
+log-x = 
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[plot_foundmissed-sub_mchirp_grad4]
+distance-type = chirp_distance
+axis-type = mchirp
+log-x = 
+gradient-far = 
+
+[plot_foundmissed-all_mchirp_gradm4]
+distance-type = chirp_distance
+axis-type = mchirp
+log-x = 
+gradient-far = 
+
+[plot_foundmissed-sub_time_grad2]
+distance-type = decisive_distance
+axis-type = time
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[plot_foundmissed-all_time_grad2]
+distance-type = decisive_distance
+axis-type = time
+log-distance = 
+gradient-far = 
+missed-on-top = 
+
+[injections-bbhimrphenomd_inj]
+dchirp-distr = uniform
+min-distance = 5000
+max-distance = 300000
+
+[inspiral-bbhimrphenomd_inj]
+injection-filter-rejector-chirp-time-window = 5
+injection-filter-rejector-match-threshold = 0.5
+
+
