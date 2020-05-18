@@ -21,7 +21,7 @@ pycbc_inspiral --segment-end-pad 64 \
 --gps-start-time 1126086042 \
 --gps-end-time 1126431642 \
 --frame-type H1_HOFT_C00 \
---injection-file /home/narola.bharatbhai/Non-GR-search/non-GR_injection_workflow/HL-INJECTIONS_3-1126086042-345600.xml \
+--injection-file /home/narola.bharatbhai/Non-GR-search/non-GR_injection_workflow/non-GRHL-INJECTIONS_3-1126086042-345600.xml \
 --bank-file /home/narola.bharatbhai/templatebank/xml-bank-gr/GR-bank-updated.xml \
 --output multiple-injections-output-4-days.hdf \
 --verbose
