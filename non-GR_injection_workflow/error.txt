@@ -1,0 +1,20 @@
+(pycbc) [narola.bharatbhai@ldas-pcdev5 non-GR_injection_workflow]$ sh generate_workflow.sh 
+2020-05-18 00:11:29,570:INFO : Reading configuration file
+2020-05-18 00:11:29,581:INFO : Starting new HTTPS connection (1): raw.githubusercontent.com
+2020-05-18 00:11:29,892:INFO : Overriding section results_page option output-path with value /home/narola.bharatbhai/public_html/LSC/o1/non_GR_workflow in configuration.
+2020-05-18 00:11:29,948:INFO : Reading configuration file
+2020-05-18 00:11:29,951:INFO : Starting new HTTPS connection (1): raw.githubusercontent.com
+2020-05-18 00:11:30,007:INFO : Overriding section results_page option output-path with value /home/narola.bharatbhai/public_html/LSC/o1/non_GR_workflow in configuration.
+2020-05-18 00:11:30,091:INFO : Reading configuration file
+2020-05-18 00:11:30,094:INFO : Starting new HTTPS connection (1): raw.githubusercontent.com
+2020-05-18 00:11:30,170:INFO : Overriding section results_page option output-path with value /home/narola.bharatbhai/public_html/LSC/o1/non_GR_workflow in configuration.
+2020-05-18 00:11:30,252:INFO : Created log file /home/narola.bharatbhai/Non-GR-search/non-GR_injection_workflow/output/results/8._workflow/H1L1-WORKFLOW-LOG-1126086042-345600.txt
+2020-05-18 00:11:30,357:INFO : Starting new HTTPS connection (1): git.ligo.org
+Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/pycbc/bin/pycbc_make_coinc_search_workflow", line 122, in <module>
+    rdir['analysis_time/segment_data'])
+  File "/home/narola.bharatbhai/src/pycbc/lib/python2.7/site-packages/pycbc/workflow/segment.py", line 1443, in get_segments_file
+    flag_str = cp.get_opt_tags("workflow-segments", option_name, [ifo])
+  File "/home/narola.bharatbhai/src/pycbc/lib/python2.7/site-packages/pycbc/workflow/configuration.py", line 1000, in get_opt_tags
+    raise ConfigParser.Error(err_string)
+ConfigParser.Error: No option 'segments-science' in section [workflow-segments] or in sections [workflow-segments-h1].
