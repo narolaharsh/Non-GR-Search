@@ -1,0 +1,28 @@
+site        : local
+                hostname    : node1578.cluster.ldas.cit
+                executable  : /home/narola.bharatbhai/src/pycbc/bin/pycbc_plot_singles_timefreq
+                arguments   :   --f-low   20   --rank   newsnr   --num-loudest   20   --approximant   IMRPhenomD   --strain-high-pass   15   --sample-rate   2048   --pad-data   8   --frame-type   H1_HOFT_C00   --channel-name   H1:GDS-CALIB_STRAIN   --trig-file   H1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --gps-start-time   1126113018   --gps-end-time   1126113038   --center-time   1126113028.7495117   --detector   H1   --output-file   H1-PLOT_SINGLES_TIMEFREQ_9-1126086042-345600.png   --gating-file   H1-O3_GATES_1238166018-15811200.txt  
+                exitcode    : 1
+                working dir : /local/condor/execute/dir_25098/pegasus.FKWeQDgJG
+
+                -------Task #1 - plot_singles_timefreq_ID8 - ID0000099 - Kickstart stderr-------
+
+                 2020-05-20 21:19:47,588 Reading Frames
+2020-05-20 21:19:47,589 querying datafind server
+2020-05-20 21:19:47,609 found files: /hdfs/frames/ER8/hoft/H1/H-H1_HOFT_C00-11261/H-H1_HOFT_C00-1126109184-4096.gwf
+2020-05-20 21:19:47,813 Highpass Filtering
+2020-05-20 21:19:47,856 Converting to float32
+2020-05-20 21:19:47,859 Resampling data
+2020-05-20 21:19:48,188 Gating times contained in gating file
+2020-05-20 21:19:48,268 Highpass Filtering
+2020-05-20 21:19:48,274 Remove Padding
+2020-05-20 21:19:48,274 Plotting strain spectrogram
+2020-05-20 21:19:48,508 Loading trigs
+2020-05-20 21:20:14,191 Loading bank
+2020-05-20 21:20:14,454 Plotting 20 trigs
+Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/pycbc/bin/pycbc_plot_singles_timefreq", line 188, in <module>
+    opts.f_low, approximant=bank.approximant(tid))
+  File "/home/narola.bharatbhai/src/pycbc/lib/python2.7/site-packages/pycbc/pnutils.py", line 579, in get_inspiral_tf
+    raise ValueError('Approximant ' + approximant + ' not supported')
+ValueError: Approximant IMRPhenomD not supported
