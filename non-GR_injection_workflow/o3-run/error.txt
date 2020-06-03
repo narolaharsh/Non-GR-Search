@@ -1,0 +1,393 @@
+	
+	************************************Summary*************************************
+	
+	 Submit Directory   : /local/narola.bharatbhai/pycbc-tmp.3yenSiZW5C/work/o3_workflow_inj-main_ID0000001.000
+	 Total jobs         :   8468 (100.00%)
+	 # jobs succeeded   :   8454 (99.83%)
+	 # jobs failed      :     10 (0.12%)
+	 # jobs held        :      0 (0.00%)
+	 # jobs unsubmitted :      4 (0.05%)
+
+	******************************Failed jobs' details******************************
+	
+	=========================plot_binnedhist_ID68_ID0001906=========================
+	
+	 last state: POST_SCRIPT_FAILED
+	       site: local
+	submit file: ./plot_binnedhist_ID68_ID0001906.sub
+	output file: plot_binnedhist_ID68_ID0001906.out.015
+	 error file: plot_binnedhist_ID68_ID0001906.err.015
+
+	-------------------------------Task #1 - Summary--------------------------------
+	
+	site        : local
+	hostname    : node982.cluster.ldas.cit
+	executable  : /home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_fit_sngls_split_binned
+	arguments   :   --sngl-stat   newsnr_sgveto   --fit-function   exponential   --stat-fit-threshold   6.   --bin-param   template_duration   --num-bins   6   --split-param-one   eta   --split-param-two   chi_eff   --ifo   H1   --veto-segment-name   closed_box   --veto-file   H1L1-FOREGROUND_CENSOR-1126086042-345600.xml   --trigger-file   H1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --output-file   H1-PLOT_BINNEDHIST_DURATION_FULL_DATA-1126086042-345600.png  
+	exitcode    : 1
+	working dir : /local/condor/execute/dir_26853/pegasus.PfiLXnEJ2
+	
+	---------Task #1 - plot_binnedhist_ID68 - ID0001906 - Kickstart stderr----------
+	
+	 Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_fit_sngls_split_binned", line 160, in <module>
+    assert params[args.bin_param].min() > 0
+AssertionError
+	
+	
+	=========================plot_binnedhist_ID68_ID0001916=========================
+	
+	 last state: POST_SCRIPT_FAILED
+	       site: local
+	submit file: ./plot_binnedhist_ID68_ID0001916.sub
+	output file: plot_binnedhist_ID68_ID0001916.out.015
+	 error file: plot_binnedhist_ID68_ID0001916.err.015
+
+	-------------------------------Task #1 - Summary--------------------------------
+	
+	site        : local
+	hostname    : node2133.cluster.ldas.cit
+	executable  : /home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_fit_sngls_split_binned
+	arguments   :   --sngl-stat   newsnr_sgveto   --fit-function   exponential   --stat-fit-threshold   6.   --bin-param   template_duration   --num-bins   6   --split-param-one   eta   --split-param-two   chi_eff   --ifo   L1   --veto-segment-name   closed_box   --veto-file   H1L1-FOREGROUND_CENSOR-1126086042-345600.xml   --trigger-file   L1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --output-file   L1-PLOT_BINNEDHIST_DURATION_FULL_DATA-1126086042-345600.png  
+	exitcode    : 1
+	working dir : /local/condor/execute/dir_31219/pegasus.Zs8oFnq9M
+	
+	---------Task #1 - plot_binnedhist_ID68 - ID0001916 - Kickstart stderr----------
+	
+	 Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_fit_sngls_split_binned", line 160, in <module>
+    assert params[args.bin_param].min() > 0
+AssertionError
+	
+	
+	==========================plot_singles_ID59_ID0001898===========================
+	
+	 last state: POST_SCRIPT_FAILED
+	       site: local
+	submit file: ./plot_singles_ID59_ID0001898.sub
+	output file: plot_singles_ID59_ID0001898.out.015
+	 error file: plot_singles_ID59_ID0001898.err.015
+
+	-------------------------------Task #1 - Summary--------------------------------
+	
+	site        : local
+	hostname    : node2134.cluster.ldas.cit
+	executable  : /home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params
+	arguments   :   --min-snr   6   --x-var   end_time   --y-var   template_duration   --log-y   --z-var   newsnr_sgveto   --min-z   6   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --veto-file   H1L1-FOREGROUND_CENSOR-1126086042-345600.xml   --segment-name   closed_box   --detector   H1   --single-trig-file   H1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --output-file   H1-PLOT_SINGLES_ENDTIME_DURATION_NEWSNR_FULL_DATA-1126086042-345600.png  
+	exitcode    : 1
+	working dir : /local/condor/execute/dir_122139/pegasus.T2nKYgwOF
+	
+	-----------Task #1 - plot_singles_ID59 - ID0001898 - Kickstart stderr-----------
+	
+	 2020-05-31 07:01:23,407 Loading triggers
+2020-05-31 07:01:24,018 Loading bank
+2020-05-31 07:01:24,463 Applying veto segments
+2020-05-31 07:01:24,936 252721343 triggers before vetoes
+2020-05-31 07:04:51,171 250561886 triggers remain after vetoes
+2020-05-31 07:04:51,171 Setting up filter function
+2020-05-31 07:23:52,906 8570792 triggers remain after cut on (self.snr>6.000000)
+2020-05-31 07:24:56,336 Plotting
+Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params", line 141, in <module>
+    hb = ax.hexbin(x, y, C=z, reduce_C_function=max, **hexbin_style)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/__init__.py", line 1870, in inner
+    return func(ax, *args, **kwargs)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/axes/_axes.py", line 4523, in hexbin
+    raise ValueError("y contains non-positive values, so can not"
+ValueError: y contains non-positive values, so can not be log-scaled
+	
+	
+	==========================plot_singles_ID59_ID0001897===========================
+	
+	 last state: POST_SCRIPT_FAILED
+	       site: local
+	submit file: ./plot_singles_ID59_ID0001897.sub
+	output file: plot_singles_ID59_ID0001897.out.015
+	 error file: plot_singles_ID59_ID0001897.err.015
+
+	-------------------------------Task #1 - Summary--------------------------------
+	
+	site        : local
+	hostname    : node801.cluster.ldas.cit
+	executable  : /home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params
+	arguments   :   --min-snr   6   --x-var   end_time   --y-var   template_duration   --log-y   --z-var   snr   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --veto-file   H1L1-FOREGROUND_CENSOR-1126086042-345600.xml   --segment-name   closed_box   --detector   H1   --single-trig-file   H1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --output-file   H1-PLOT_SINGLES_ENDTIME_DURATION_SNR_FULL_DATA-1126086042-345600.png  
+	exitcode    : 1
+	working dir : /local/condor/execute/dir_9285/pegasus.Nv8RODpxn
+	
+	-----------Task #1 - plot_singles_ID59 - ID0001897 - Kickstart stderr-----------
+	
+	 2020-05-31 06:56:02,346 Loading triggers
+2020-05-31 06:56:02,361 Loading bank
+2020-05-31 06:56:02,759 Applying veto segments
+2020-05-31 06:56:03,094 252721343 triggers before vetoes
+2020-05-31 07:00:46,036 250561886 triggers remain after vetoes
+2020-05-31 07:00:46,037 Setting up filter function
+2020-05-31 07:18:48,102 8570792 triggers remain after cut on (self.snr>6.000000)
+2020-05-31 07:20:26,770 Plotting
+Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params", line 141, in <module>
+    hb = ax.hexbin(x, y, C=z, reduce_C_function=max, **hexbin_style)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/__init__.py", line 1870, in inner
+    return func(ax, *args, **kwargs)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/axes/_axes.py", line 4523, in hexbin
+    raise ValueError("y contains non-positive values, so can not"
+ValueError: y contains non-positive values, so can not be log-scaled
+	
+	
+	==========================plot_singles_ID59_ID0001899===========================
+	
+	 last state: POST_SCRIPT_FAILED
+	       site: local
+	submit file: ./plot_singles_ID59_ID0001899.sub
+	output file: plot_singles_ID59_ID0001899.out.015
+	 error file: plot_singles_ID59_ID0001899.err.015
+
+	-------------------------------Task #1 - Summary--------------------------------
+	
+	site        : local
+	hostname    : node792.cluster.ldas.cit
+	executable  : /home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params
+	arguments   :   --min-snr   6   --x-var   end_time   --y-var   template_duration   --log-y   --z-var   density   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --veto-file   H1L1-FOREGROUND_CENSOR-1126086042-345600.xml   --segment-name   closed_box   --detector   H1   --single-trig-file   H1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --output-file   H1-PLOT_SINGLES_ENDTIME_DURATION_DENSITY_FULL_DATA-1126086042-345600.png  
+	exitcode    : 1
+	working dir : /local/condor/execute/dir_10111/pegasus.UN7o1MIj9
+	
+	-----------Task #1 - plot_singles_ID59 - ID0001899 - Kickstart stderr-----------
+	
+	 2020-05-31 06:39:29,427 Loading triggers
+2020-05-31 06:39:29,979 Loading bank
+2020-05-31 06:39:30,310 Applying veto segments
+2020-05-31 06:39:30,983 252721343 triggers before vetoes
+2020-05-31 06:43:44,897 250561886 triggers remain after vetoes
+2020-05-31 06:43:44,897 Setting up filter function
+2020-05-31 06:59:38,323 8570792 triggers remain after cut on (self.snr>6.000000)
+2020-05-31 07:00:53,715 Plotting
+Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params", line 129, in <module>
+    hb = ax.hexbin(x, y, norm=norm, vmin=1, **hexbin_style)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/__init__.py", line 1870, in inner
+    return func(ax, *args, **kwargs)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/axes/_axes.py", line 4523, in hexbin
+    raise ValueError("y contains non-positive values, so can not"
+ValueError: y contains non-positive values, so can not be log-scaled
+	
+	
+	==========================plot_singles_ID59_ID0001901===========================
+	
+	 last state: POST_SCRIPT_FAILED
+	       site: local
+	submit file: ./plot_singles_ID59_ID0001901.sub
+	output file: plot_singles_ID59_ID0001901.out.015
+	 error file: plot_singles_ID59_ID0001901.err.015
+
+	-------------------------------Task #1 - Summary--------------------------------
+	
+	site        : local
+	hostname    : cascade1
+	executable  : /home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params
+	arguments   :   --min-snr   6   --x-var   template_duration   --log-x   --y-var   effective_spin   --z-var   newsnr_sgveto   --min-z   6   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --veto-file   H1L1-FOREGROUND_CENSOR-1126086042-345600.xml   --segment-name   closed_box   --detector   H1   --single-trig-file   H1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --output-file   H1-PLOT_SINGLES_DURATION_EFFSPIN_NEWSNR_FULL_DATA-1126086042-345600.png  
+	exitcode    : 1
+	working dir : /local/condor/execute/dir_143109/pegasus.a8a6pFeqO
+	
+	-----------Task #1 - plot_singles_ID59 - ID0001901 - Kickstart stderr-----------
+	
+	 2020-05-31 07:06:36,554 Loading triggers
+2020-05-31 07:06:36,609 Loading bank
+2020-05-31 07:06:36,828 Applying veto segments
+2020-05-31 07:06:37,251 252721343 triggers before vetoes
+2020-05-31 07:09:16,603 250561886 triggers remain after vetoes
+2020-05-31 07:09:16,603 Setting up filter function
+2020-05-31 07:21:14,408 8570792 triggers remain after cut on (self.snr>6.000000)
+2020-05-31 07:22:44,873 Plotting
+Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params", line 141, in <module>
+    hb = ax.hexbin(x, y, C=z, reduce_C_function=max, **hexbin_style)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/__init__.py", line 1870, in inner
+    return func(ax, *args, **kwargs)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/axes/_axes.py", line 4518, in hexbin
+    raise ValueError("x contains non-positive values, so can not"
+ValueError: x contains non-positive values, so can not be log-scaled
+	
+	
+	==========================plot_singles_ID59_ID0001908===========================
+	
+	 last state: POST_SCRIPT_FAILED
+	       site: local
+	submit file: ./plot_singles_ID59_ID0001908.sub
+	output file: plot_singles_ID59_ID0001908.out.015
+	 error file: plot_singles_ID59_ID0001908.err.015
+
+	-------------------------------Task #1 - Summary--------------------------------
+	
+	site        : local
+	hostname    : node786.cluster.ldas.cit
+	executable  : /home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params
+	arguments   :   --min-snr   6   --x-var   end_time   --y-var   template_duration   --log-y   --z-var   newsnr_sgveto   --min-z   6   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --veto-file   H1L1-FOREGROUND_CENSOR-1126086042-345600.xml   --segment-name   closed_box   --detector   L1   --single-trig-file   L1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --output-file   L1-PLOT_SINGLES_ENDTIME_DURATION_NEWSNR_FULL_DATA-1126086042-345600.png  
+	exitcode    : 1
+	working dir : /local/condor/execute/dir_26062/pegasus.tbzkiPMCn
+	
+	-----------Task #1 - plot_singles_ID59 - ID0001908 - Kickstart stderr-----------
+	
+	 2020-05-31 06:17:07,929 Loading triggers
+2020-05-31 06:17:08,543 Loading bank
+2020-05-31 06:17:08,746 Applying veto segments
+2020-05-31 06:17:09,130 170391502 triggers before vetoes
+2020-05-31 06:19:10,047 168149991 triggers remain after vetoes
+2020-05-31 06:19:10,047 Setting up filter function
+2020-05-31 06:27:58,785 1965650 triggers remain after cut on (self.snr>6.000000)
+2020-05-31 06:28:15,541 Plotting
+Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params", line 141, in <module>
+    hb = ax.hexbin(x, y, C=z, reduce_C_function=max, **hexbin_style)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/__init__.py", line 1870, in inner
+    return func(ax, *args, **kwargs)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/axes/_axes.py", line 4523, in hexbin
+    raise ValueError("y contains non-positive values, so can not"
+ValueError: y contains non-positive values, so can not be log-scaled
+	
+	
+	==========================plot_singles_ID59_ID0001907===========================
+	
+	 last state: POST_SCRIPT_FAILED
+	       site: local
+	submit file: ./plot_singles_ID59_ID0001907.sub
+	output file: plot_singles_ID59_ID0001907.out.015
+	 error file: plot_singles_ID59_ID0001907.err.015
+
+	-------------------------------Task #1 - Summary--------------------------------
+	
+	site        : local
+	hostname    : node815.cluster.ldas.cit
+	executable  : /home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params
+	arguments   :   --min-snr   6   --x-var   end_time   --y-var   template_duration   --log-y   --z-var   snr   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --veto-file   H1L1-FOREGROUND_CENSOR-1126086042-345600.xml   --segment-name   closed_box   --detector   L1   --single-trig-file   L1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --output-file   L1-PLOT_SINGLES_ENDTIME_DURATION_SNR_FULL_DATA-1126086042-345600.png  
+	exitcode    : 1
+	working dir : /local/condor/execute/dir_5975/pegasus.acqb91Aq0
+	
+	-----------Task #1 - plot_singles_ID59 - ID0001907 - Kickstart stderr-----------
+	
+	 2020-05-31 06:01:18,366 Loading triggers
+2020-05-31 06:01:18,556 Loading bank
+2020-05-31 06:01:18,655 Applying veto segments
+2020-05-31 06:01:18,869 170391502 triggers before vetoes
+2020-05-31 06:02:51,967 168149991 triggers remain after vetoes
+2020-05-31 06:02:51,968 Setting up filter function
+2020-05-31 06:09:19,217 1965650 triggers remain after cut on (self.snr>6.000000)
+2020-05-31 06:09:31,687 Plotting
+Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params", line 141, in <module>
+    hb = ax.hexbin(x, y, C=z, reduce_C_function=max, **hexbin_style)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/__init__.py", line 1870, in inner
+    return func(ax, *args, **kwargs)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/axes/_axes.py", line 4523, in hexbin
+    raise ValueError("y contains non-positive values, so can not"
+ValueError: y contains non-positive values, so can not be log-scaled
+	
+	
+	==========================plot_singles_ID59_ID0001909===========================
+	
+	 last state: POST_SCRIPT_FAILED
+	       site: local
+	submit file: ./plot_singles_ID59_ID0001909.sub
+	output file: plot_singles_ID59_ID0001909.out.015
+	 error file: plot_singles_ID59_ID0001909.err.015
+
+	-------------------------------Task #1 - Summary--------------------------------
+	
+	site        : local
+	hostname    : node2163.cluster.ldas.cit
+	executable  : /home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params
+	arguments   :   --min-snr   6   --x-var   end_time   --y-var   template_duration   --log-y   --z-var   density   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --veto-file   H1L1-FOREGROUND_CENSOR-1126086042-345600.xml   --segment-name   closed_box   --detector   L1   --single-trig-file   L1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --output-file   L1-PLOT_SINGLES_ENDTIME_DURATION_DENSITY_FULL_DATA-1126086042-345600.png  
+	exitcode    : 1
+	working dir : /local/condor/execute/dir_3419/pegasus.l4ehz3muo
+	
+	-----------Task #1 - plot_singles_ID59 - ID0001909 - Kickstart stderr-----------
+	
+	 2020-05-31 06:18:34,592 Loading triggers
+2020-05-31 06:18:34,835 Loading bank
+2020-05-31 06:18:34,968 Applying veto segments
+2020-05-31 06:18:35,223 170391502 triggers before vetoes
+2020-05-31 06:20:23,895 168149991 triggers remain after vetoes
+2020-05-31 06:20:23,895 Setting up filter function
+2020-05-31 06:28:34,861 1965650 triggers remain after cut on (self.snr>6.000000)
+2020-05-31 06:28:47,713 Plotting
+Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params", line 129, in <module>
+    hb = ax.hexbin(x, y, norm=norm, vmin=1, **hexbin_style)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/__init__.py", line 1870, in inner
+    return func(ax, *args, **kwargs)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/axes/_axes.py", line 4523, in hexbin
+    raise ValueError("y contains non-positive values, so can not"
+ValueError: y contains non-positive values, so can not be log-scaled
+	
+	
+	==========================plot_singles_ID59_ID0001911===========================
+	
+	 last state: POST_SCRIPT_FAILED
+	       site: local
+	submit file: ./plot_singles_ID59_ID0001911.sub
+	output file: plot_singles_ID59_ID0001911.out.015
+	 error file: plot_singles_ID59_ID0001911.err.015
+
+	-------------------------------Task #1 - Summary--------------------------------
+	
+	site        : local
+	hostname    : cascade1
+	executable  : /home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params
+	arguments   :   --min-snr   6   --x-var   template_duration   --log-x   --y-var   effective_spin   --z-var   newsnr_sgveto   --min-z   6   --bank-file   H1L1-BANK2HDF-1126086042-345600.hdf   --veto-file   H1L1-FOREGROUND_CENSOR-1126086042-345600.xml   --segment-name   closed_box   --detector   L1   --single-trig-file   L1-HDF_TRIGGER_MERGE_FULL_DATA-1126086042-345600.hdf   --output-file   L1-PLOT_SINGLES_DURATION_EFFSPIN_NEWSNR_FULL_DATA-1126086042-345600.png  
+	exitcode    : 1
+	working dir : /local/condor/execute/dir_136719/pegasus.ccoJIuaz6
+	
+	-----------Task #1 - plot_singles_ID59 - ID0001911 - Kickstart stderr-----------
+	
+	 2020-05-31 06:11:36,402 Loading triggers
+2020-05-31 06:11:36,734 Loading bank
+2020-05-31 06:11:36,863 Applying veto segments
+2020-05-31 06:11:37,107 170391502 triggers before vetoes
+2020-05-31 06:13:32,632 168149991 triggers remain after vetoes
+2020-05-31 06:13:32,632 Setting up filter function
+2020-05-31 06:21:35,123 1965650 triggers remain after cut on (self.snr>6.000000)
+2020-05-31 06:22:03,204 Plotting
+Traceback (most recent call last):
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/bin/pycbc_plot_singles_vs_params", line 141, in <module>
+    hb = ax.hexbin(x, y, C=z, reduce_C_function=max, **hexbin_style)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/__init__.py", line 1870, in inner
+    return func(ax, *args, **kwargs)
+  File "/home/narola.bharatbhai/src/nonGR-pycbc/lib/python2.7/site-packages/matplotlib/axes/_axes.py", line 4518, in hexbin
+    raise ValueError("x contains non-positive values, so can not"
+ValueError: x contains non-positive values, so can not be log-scaled
+	
+
+************************************Summary*************************************
+
+ Submit Directory   : /local/narola.bharatbhai/pycbc-tmp.3yenSiZW5C/work
+ Total jobs         :      8 (100.00%)
+ # jobs succeeded   :      3 (37.50%)
+ # jobs failed      :      1 (12.50%)
+ # jobs held        :      0 (0.00%)
+ # jobs unsubmitted :      4 (50.00%)
+
+******************************Failed jobs' details******************************
+
+=====================subdax_o3_workflow_inj-main_ID0000001======================
+
+ last state: JOB_FAILURE
+       site: local
+submit file: ./subdax_o3_workflow_inj-main_ID0000001.sub
+output file: subdax_o3_workflow_inj-main_ID0000001.out
+ error file: subdax_o3_workflow_inj-main_ID0000001.err
+
+
+-------------------------------Task #1 - Summary--------------------------------
+
+site        : local
+hostname    : ldas-pcdev6.ligo.caltech.edu
+executable  : /usr/bin/condor_dagman
+arguments   :  -p 0  -f -l . -Notification never -Debug 3 -Lockfile o3_workflow_inj-main-0.dag.lock -Dag o3_workflow_inj-main-0.dag -AllowVersionMismatch  -AutoRescue 1 -DoRescueFrom 0  -MaxPre 1
+exitcode    : 1
+working dir : /local/narola.bharatbhai/pycbc-tmp.3yenSiZW5C/work
+
+-----------------Task #1 - condor::dagman - ID0000001 - stdout------------------
+
+Executing condor dagman ...
+
+==============================Failed Sub Workflow===============================
+================================================================================
