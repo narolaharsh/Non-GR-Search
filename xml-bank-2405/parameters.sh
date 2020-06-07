@@ -1,0 +1,13 @@
+python lalapps_cbc_sbank.py --approximant IMRPhenomD  --aligned-spin \
+  	--mass1-min 5.0 --mass1-max 100.0 \
+	--mass2-min 5.0 --mass2-max 90.0 \
+	--mratio-min 1.0 --mratio-max 10.0 \
+	--mtotal-min 10.0 --mtotal-max 100.0 \
+	--spin1-min -0.998 --spin1-max 0.998 \
+	--spin2-min -0.998 --spin2-max 0.998 \
+	--match-min 0.97 \
+	--flow 30.0 --fhigh-max 1024 \
+	--reference-psd /home/narola.bharatbhai/templatebank/xml-bank-gr/H1L1-AVERAGE_PSD-1128643217-86400.txt \
+    --output-filename GRBank-2405.xml.gz \
+    --checkpoint 5000 \
+    --verbose
